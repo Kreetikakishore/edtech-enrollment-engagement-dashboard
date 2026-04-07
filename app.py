@@ -107,15 +107,21 @@ with col1:
     age_data = filtered.groupby('AgeGroup').size().reindex(
         age_order).reset_index()
     age_data.columns = ['Age Group', 'Enrollments']
-    fig = px.bar(
-        age_data, x='Age Group', y='Enrollments',
-        color='Enrollments',
-        color_continuous_scale='Blues',
+    fig = go.Figure(go.Bar(
+        x=age_data['Age Group'],
+        y=age_data['Enrollments'],
+        marker_color=['#e74c3c', '#3498db', '#2ecc71'],
         text=age_data['Enrollments'].apply(lambda x: f'{x:,}'),
-        title='Enrollments by Age Group'
+        textposition='outside'
+    ))
+    fig.update_layout(
+        title='Enrollments by Age Group',
+        xaxis_title='Age Group',
+        yaxis_title='Enrollments',
+        showlegend=False,
+        height=400,
+        yaxis=dict(range=[0, 5800])
     )
-    fig.update_traces(textposition='outside')
-    fig.update_layout(showlegend=False, height=400)
     st.plotly_chart(fig, use_container_width=True)
 
 with col2:
@@ -150,7 +156,8 @@ with col1:
             'Advanced'    : '#e74c3c'
         },
         barmode='group',
-        title='Age Group vs Course Level'
+        title='Age Group vs Course Level',
+        category_orders={'Age Group': age_order}
     )
     fig3.update_layout(height=400)
     st.plotly_chart(fig3, use_container_width=True)
@@ -161,8 +168,17 @@ with col2:
     fig4 = px.bar(
         age_cat, x='Age Group', y='Enrollments',
         color='Category',
+        color_discrete_sequence=[
+            '#1A5276', '#85C1E9',
+            '#1A5276', '#85C1E9',
+            '#1A5276', '#85C1E9',
+            '#1A5276', '#85C1E9',
+            '#1A5276', '#85C1E9',
+            '#1A5276', '#85C1E9',
+        ],
         title='Age Group vs Course Category',
-        barmode='stack'
+        barmode='stack',
+        category_orders={'Age Group': age_order}
     )
     fig4.update_layout(height=400)
     st.plotly_chart(fig4, use_container_width=True)
@@ -204,7 +220,8 @@ with col2:
             'Male'  : '#3498db'
         },
         barmode='group',
-        title='Gender vs Course Level'
+        title='Gender vs Course Level',
+        category_orders={'Level': ['Beginner', 'Intermediate', 'Advanced']}
     )
     fig6.update_layout(height=500)
     st.plotly_chart(fig6, use_container_width=True)
@@ -222,16 +239,22 @@ with col1:
     cat_data = filtered.groupby('CourseCategory').size().reset_index()
     cat_data.columns = ['Category', 'Enrollments']
     cat_data = cat_data.sort_values('Enrollments', ascending=True)
-    fig7 = px.bar(
-        cat_data, x='Enrollments', y='Category',
-        color='Enrollments',
-        color_continuous_scale='Viridis',
+    fig7 = go.Figure(go.Bar(
+        x=cat_data['Enrollments'],
+        y=cat_data['Category'],
         orientation='h',
+        marker_color='#3498db',
+        text=cat_data['Enrollments'].apply(lambda x: f'{x:,}'),
+        textposition='outside'
+    ))
+    fig7.update_layout(
         title='Enrollments by Course Category',
-        text=cat_data['Enrollments'].apply(lambda x: f'{x:,}')
+        xaxis_title='Enrollments',
+        yaxis_title='',
+        showlegend=False,
+        height=500,
+        xaxis=dict(range=[0, 1050])
     )
-    fig7.update_traces(textposition='outside')
-    fig7.update_layout(showlegend=False, height=500)
     st.plotly_chart(fig7, use_container_width=True)
 
 with col2:
@@ -298,9 +321,9 @@ col1, col2 = st.columns(2)
 with col1:
     monthly = filtered.groupby('Month').size().reset_index()
     monthly.columns = ['Month', 'Enrollments']
-    month_names = {1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',
-                   6:'Jun',7:'Jul',8:'Aug',9:'Sep',
-                   10:'Oct',11:'Nov',12:'Dec'}
+    month_names = {1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr',
+                   5:'May', 6:'Jun', 7:'Jul', 8:'Aug',
+                   9:'Sep', 10:'Oct', 11:'Nov', 12:'Dec'}
     monthly['Month Name'] = monthly['Month'].map(month_names)
     fig11 = px.line(
         monthly, x='Month Name', y='Enrollments',
@@ -308,21 +331,31 @@ with col1:
         title='Monthly Enrollment Trend',
         color_discrete_sequence=['#3498db']
     )
+    fig11.update_traces(line_width=2.5, marker_size=8,
+                        marker_color='#e74c3c')
     fig11.update_layout(height=400)
     st.plotly_chart(fig11, use_container_width=True)
 
 with col2:
     top10 = filtered.groupby('CourseName').size().reset_index()
     top10.columns = ['Course', 'Enrollments']
-    top10 = top10.sort_values('Enrollments', ascending=False).head(10)
-    fig12 = px.bar(
-        top10, x='Enrollments', y='Course',
-        color='Enrollments',
-        color_continuous_scale='Purples',
+    top10 = top10.sort_values('Enrollments', ascending=True).tail(10)
+    fig12 = go.Figure(go.Bar(
+        x=top10['Enrollments'],
+        y=top10['Course'],
         orientation='h',
-        title='Top 10 Most Enrolled Courses'
+        marker_color='#9b59b6',
+        text=top10['Enrollments'],
+        textposition='outside'
+    ))
+    fig12.update_layout(
+        title='Top 10 Most Enrolled Courses',
+        xaxis_title='Enrollments',
+        yaxis_title='',
+        showlegend=False,
+        height=400,
+        xaxis=dict(range=[0, 380])
     )
-    fig12.update_layout(showlegend=False, height=400)
     st.plotly_chart(fig12, use_container_width=True)
 
 st.markdown("---")
@@ -347,4 +380,4 @@ st.dataframe(
 )
 
 st.markdown("---")
-st.markdown("**Toronto Government — Parks, Forestry & Recreation** | EduPro Learner Analytics | 2025")
+st.markdown("**Toronto Government — Parks, Forestry & Recreation** | EduPro Learner Analytics | 2026")
