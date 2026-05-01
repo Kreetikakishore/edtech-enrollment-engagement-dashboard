@@ -1,185 +1,197 @@
-# 🎓 EdTech Enrollment & Engagement Dashboard
+# 🎓 EdTech Enrollment & Engagement Analytics Dashboard
 
-![Python](https://img.shields.io/badge/Python-3.11-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red) ![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-green) ![Plotly](https://img.shields.io/badge/Plotly-Visualizations-orange)
-
-## 📋 Project Overview
-
-This project provides a comprehensive demographic and behavioral analysis of learners on the **EduPro** online learning platform. Built for the **Toronto Government Parks, Forestry & Recreation**, it uncovers enrollment patterns across age groups, gender, course categories, and skill levels to help decision-makers design data-driven education strategies.
+> A business intelligence case study designed to analyze learner demographics, enrollment behavior, and course engagement patterns on an online education platform using Python, Pandas, Plotly, and Streamlit.
 
 ---
 
-## 🎯 Key Findings
+## 📌 Executive Summary
 
-| Metric | Value |
-|---|---|
+Online education platforms generate large volumes of learner interaction data, but converting this raw data into actionable enrollment strategy requires structured analytics.
+
+This project analyzes **10,000 learner enrollments** across demographic groups, course categories, pricing models, and skill levels to uncover:
+
+- who the most active learners are,
+- what courses drive the highest engagement,
+- when enrollment peaks occur,
+- and where strategic opportunities exist to improve learner retention and paid course adoption.
+
+The final output is an interactive **Streamlit business dashboard** built for decision-makers to monitor learner participation and optimize platform growth.
+
+---
+
+## 🎯 Business Questions Addressed
+
+This analytics case study was developed to answer the following key questions:
+
+- Which learner age segment contributes the highest enrollment volume?
+- Are users more inclined toward free courses or paid programs?
+- Which course categories generate the strongest engagement?
+- How balanced is participation across gender groups?
+- Which skill level attracts the largest learner base?
+- Are there identifiable monthly enrollment spikes?
+- What strategic actions can improve conversion from casual learners to repeat users?
+
+---
+
+## 📊 Core KPI Snapshot
+
+| KPI Metric | Value |
+|------------|-------|
 | Total Enrollments | 10,000 |
 | Active Learners | 3,000 |
-| Avg Courses per Learner | 3.33 |
-| Top Age Group | 26–35 (48% of enrollments) |
-| Top Course Category | Data Science (916 enrollments) |
-| Top Course | Deep Learning |
-| Free Course Popularity | 64.03% |
-| Gender Balance | 50.78% Female / 49.22% Male |
-| Peak Enrollment Month | June (899 enrollments) |
+| Average Courses per Learner | 3.33 |
+| Highest Contributing Age Group | 26–35 Years |
+| Most Popular Category | Data Science |
+| Most Enrolled Course | Deep Learning |
+| Free Course Share | 64.03% |
+| Gender Participation | 50.78% Female / 49.22% Male |
+| Peak Enrollment Month | June |
 
 ---
 
-## 📁 Project Structure
+## 🧠 Key Analytical Findings
 
-```
-edupro_project/
+### 1. Mid-Career Learners Dominate Platform Usage
+Learners in the **26–35 age group account for nearly half of all enrollments**, indicating that working professionals and career-switchers form the platform’s most engaged user base.
+
+### 2. Free Courses Act as Primary Acquisition Funnel
+More than **64% of all enrollments are concentrated in free courses**, revealing strong price sensitivity and highlighting free offerings as a top-of-funnel learner acquisition strategy.
+
+### 3. Data Science Leads Overall Course Demand
+Among all categories, **Data Science records the highest enrollment count**, suggesting sustained demand for career-oriented technical upskilling.
+
+### 4. Beginner-Level Programs Drive Highest Participation
+The majority of users prefer beginner-friendly content, indicating that a large percentage of learners are entering new learning domains rather than pursuing advanced specialization.
+
+### 5. June Shows Strong Seasonal Enrollment Spike
+Enrollment volume peaks sharply in June, signaling a recurring opportunity for targeted promotional campaigns and certification pushes.
+
+---
+
+## 📈 Strategic Recommendations
+
+Based on the observed learner behavior patterns, the following actions are recommended:
+
+- **Use free beginner courses as conversion channels** into premium intermediate certification programs.
+- **Target 26–35 year learners** with career advancement bundles, as they represent the strongest recurring audience.
+- **Launch pre-June marketing campaigns** to capitalize on historical enrollment surges.
+- **Expand high-demand Data Science and Programming tracks** with progressive paid pathways.
+- **Introduce learner retention nudges** to increase the average courses-per-user metric beyond 3.33.
+
+---
+
+## 🗂️ Dataset Scope
+
+The analysis was performed on a multi-sheet EdTech dataset consisting of learner, course, instructor, and transaction-level information.
+
+| Dataset Table | Records | Description |
+|---------------|---------|-------------|
+| Users | 3,000 | Learner demographics and identities |
+| Teachers | 60 | Instructor expertise and ratings |
+| Courses | 60 | Category, level, pricing, duration |
+| Transactions | 10,000 | Enrollment and payment records |
+
+---
+
+## 🧰 Technology Stack
+
+| Tool | Role |
+|------|------|
+| Python | Core analytics programming |
+| Pandas | Data cleaning & KPI generation |
+| NumPy | Numerical computations |
+| Plotly | Interactive visual analytics |
+| Matplotlib / Seaborn | Exploratory chart generation |
+| Streamlit | Executive dashboard deployment |
+| OpenPyXL | Excel ingestion |
+
+---
+
+## 🖥️ Dashboard Modules
+
+The final Streamlit dashboard includes:
+
+- Executive KPI Overview
+- Learner Demographic Segmentation
+- Age vs Enrollment Analysis
+- Gender Participation Trends
+- Course Category Popularity
+- Free vs Paid Course Preference
+- Enrollment Heatmaps
+- Monthly Trend Monitoring
+- Raw Data Exploration with Filters
+
+---
+
+## 📁 Repository Structure
+
+```bash
+edtech-enrollment-engagement-dashboard/
+│
 ├── data/
-│   ├── EduPro Online Platform (1).xlsx    # Original dataset
-│   ├── users_cleaned.csv                  # Cleaned users data
-│   ├── master.csv                         # Merged master dataset
-│   └── KPI_Summary.csv                    # All KPIs saved
+│   ├── EduPro Online Platform (1).xlsx
+│   ├── users_cleaned.csv
+│   ├── master.csv
+│   └── KPI_Summary.csv
+│
 ├── charts/
-│   ├── 01_age_distribution.png
-│   ├── 02_enrollments_by_age.png
-│   ├── 03_gender_distribution.png
-│   ├── 04_category_popularity.png
-│   ├── 05_course_type.png
-│   ├── 06_course_level.png
-│   ├── 07_heatmap_age_category.png
-│   ├── 08_gender_vs_category.png
-│   ├── 09_gender_vs_level.png
-│   ├── 10_age_vs_level.png
-│   ├── 11_top_courses.png
-│   ├── 12_monthly_trend.png
-│   └── 13_payment_methods.png
-├── analysis.py                            # EDA & KPI calculations
-├── charts.py                              # Static chart generation
-├── app.py                                 # Streamlit dashboard
+│   └── static_visualizations/
+│
+├── analysis.py
+├── charts.py
+├── app.py
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🗂️ Dataset Description
+## 🚀 How to Run the Dashboard
 
-| Sheet | Rows | Description |
-|---|---|---|
-| Users | 3,000 | UserID, UserName, Age, Gender, Email |
-| Teachers | 60 | TeacherID, Name, Expertise, Experience, Rating |
-| Courses | 60 | CourseID, Name, Category, Type, Level, Price, Duration, Rating |
-| Transactions | 10,000 | TransactionID, UserID, CourseID, Date, Amount, PaymentMethod |
+### 1. Clone Repository
 
----
-
-## 📊 Segments Analyzed
-
-| Segment | Groups |
-|---|---|
-| Age Group | Under 18 / 18–25 / 26–35 |
-| Course Type | Free / Paid |
-| Course Level | Beginner / Intermediate / Advanced |
-| Course Category | 12 categories including Data Science, Programming, Finance etc. |
-
----
-
-## 📈 KPIs Tracked
-
-- **Total Enrollments** — Platform engagement indicator
-- **Enrollments by Age Group** — Demographic reach
-- **Gender Participation Ratio** — Inclusivity metric
-- **Category Popularity Index** — Course demand
-- **Level Preference Distribution** — Skill maturity insight
-
----
-
-## 🚀 How to Run
-
-### 1. Clone the repository
 ```bash
-git clone https://github.com/Kreetikakishore/edupro-analytics.git
-cd edupro_project
+git clone https://github.com/your-username/edtech-enrollment-engagement-dashboard.git
+cd edtech-enrollment-engagement-dashboard
 ```
 
-### 2. Install dependencies
+### 2. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Run the analysis
-```bash
-python analysis.py
-```
+### 3. Launch Streamlit App
 
-### 4. Generate charts
-```bash
-python charts.py
-```
-
-### 5. Launch the dashboard
 ```bash
 python -m streamlit run app.py
 ```
 
-Open your browser at `http://localhost:8501`
+### 4. Open Browser
+
+```bash
+http://localhost:8501
+```
 
 ---
 
-## 🖥️ Dashboard Features
+## 📌 Deliverables Produced
 
-| Module | Description |
-|---|---|
-| Platform Overview | 5 live KPI cards updating with filters |
-| Learner Demographics | Age group and gender distribution charts |
-| Age-wise Enrollment | Age vs course level and category analysis |
-| Gender Preferences | Gender vs category and level comparisons |
-| Category Popularity | Horizontal bar chart and free vs paid split |
-| Enrollment Heatmaps | Age x Category and Gender x Level heatmaps |
-| Monthly Trends | Line chart of enrollment trends + top 10 courses |
-| Raw Data Explorer | Filterable table of all 10,000 enrollments |
-
-### Sidebar Filters
-- Age Group (Under 18 / 18–25 / 26–35)
-- Gender (Male / Female)
-- Course Category (all 12 categories)
-- Course Level (Beginner / Intermediate / Advanced)
+- Cleaned and merged learner analytics dataset
+- KPI summary file
+- Static EDA visualizations
+- Interactive executive dashboard
+- Strategic business recommendations
 
 ---
 
-## 🔍 Key Insights
+## ⚠️ Note
 
-1. **26–35 age group dominates** with 48% of all enrollments — the most active learner segment
-2. **Data Science is the most popular category** with 916 enrollments across all demographics
-3. **Free courses account for 64%** of all enrollments — price sensitivity is high among learners
-4. **Gender is nearly balanced** at 50.78% Female vs 49.22% Male — strong platform inclusivity
-5. **Beginner level is most popular** — most learners are starting their learning journey
-6. **June is the peak enrollment month** with 899 enrollments — seasonal pattern worth leveraging
-7. **Average 3.33 courses per learner** — moderate engagement with room to grow
-
----
-
-## 🛠️ Tech Stack
-
-| Tool | Purpose |
-|---|---|
-| Python 3.11 | Core programming language |
-| Pandas | Data manipulation and analysis |
-| NumPy | Numerical calculations |
-| Matplotlib | Static chart generation |
-| Seaborn | Statistical visualizations |
-| Plotly | Interactive dashboard charts |
-| Streamlit | Web dashboard framework |
-| OpenPyXL | Excel file reading |
-
----
-
-## 📄 Deliverables
-
-- ✅ Cleaned and merged master dataset
-- ✅ 13 static visualizations
-- ✅ KPI summary CSV
-- ✅ Interactive Streamlit dashboard
-- ✅ Research paper with insights and recommendations
+This project was developed as a data analytics portfolio case study to demonstrate learner behavior intelligence, KPI dashboarding, and business recommendation generation in the EdTech domain.
 
 ---
 
 ## 👤 Author
 
-**Kreetika**
-Toronto Government — Parks, Forestry & Recreation | EduPro Learner Analytics Project
-2026
+**Kreetika Kishore**  
+Data Analytics Portfolio Project | 2026
