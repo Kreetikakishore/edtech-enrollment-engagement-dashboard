@@ -1,4 +1,4 @@
-# 🎓 Learner Demographics & Course Enrollment Behavior Analysis on EduPro
+# 🎓 EdTech Learner Enrollment & Course Conversion Analytics Dashboard
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red) ![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-green) ![Plotly](https://img.shields.io/badge/Plotly-Visualizations-orange)
 
