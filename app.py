@@ -380,4 +380,4 @@ st.dataframe(
 )
 
 st.markdown("---")
-st.markdown("**Toronto Government — Parks, Forestry & Recreation** | EduPro Learner Analytics | 2026")
+st.markdown("**EduPro Online Learning Platform** | Enrollment & Engagement Analytics | 2026")
