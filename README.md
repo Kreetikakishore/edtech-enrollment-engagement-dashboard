@@ -123,6 +123,14 @@ The final Streamlit dashboard includes:
 
 ---
 
+## 📸 Dashboard Preview
+
+![Dashboard Screenshot](assets/dashboard.png)
+
+## 🚀 Live Demo
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://kreetikakishore-edtech-enrollment-engagement-dashboa-app-3iz12v.streamlit.app/)
+
 ## 📁 Repository Structure
 
 ```bash
